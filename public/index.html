@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VEX 0.1</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <h1 class="text-dark-emphasis">Volunteer Engagement eXperts (VEX)</h1>
+
+  <!-- MENU -->
+  <div id="menu">
+  </div>
+
+  <!-- Fix this later ⬇️ -->
+
+  <div class="modal-preauth">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a id="menu-signin" class="nav-link active" aria-current="page">Sign In/Registration</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled">Event Management</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled">Event-Volunteer Pairing Management</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="modal-postauth">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <button id="menu-home" class="nav-link active">Home</button>
+      </li>
+      <li class="nav-item">
+        <button id="menu-settings" class="nav-link">Account Settings</button>
+      </li>
+      <li class="nav-item">
+        <button id="menu-management" class="nav-link">Event Management</button>
+      </li>
+      <li class="nav-item">
+        <button id="menu-notifications-button" class="nav-link">Notifications</button>
+      </li>
+      <li class="nav-item">
+        <button id="menu-signout" class="nav-link text-danger">Sign Out</button>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="card modal-preauth">
+    <div class="card-body">
+      <h5 class="card-title">Sign in or register to continue.</h5>
+      <form id="form-signin" method="post">
+        <div>
+          <input type="email" name="email" placeholder="Email Address"
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+        </div>
+        <div>
+          <input type="password" name="password" placeholder="Password" minlength="6" required>
+        </div>
+        <div>
+          <button class="btn btn-outline-primary" type="submit">Sign In</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">
+            Register
+          </button>
+        </div>
+      </form>
+
+      <!-- Button trigger modal -->
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="form-signup" method="post">
+                <div>
+                  <input type="fname" name="fname" placeholder="First Name" required>
+                </div>
+                <div>
+                  <input type="lname" name="lname" placeholder="Last Name" required>
+                </div>
+                <div>
+                  <input type="number" name="age" placeholder="Age" min="10" max="116" required>
+                </div>
+                <div>
+                  <input type="text" name="mailing" placeholder="Mailing Address" minlength="10" required>
+                </div>
+                <div>
+                  <input type="email" name="email" placeholder="Email Address"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+                </div>
+                <div>
+                  <input type="password" name="password" placeholder="Password (6 characters or more)" minlength="6"
+                    required>
+                </div>
+                <div>
+                  <button class="btn btn-outline-primary" type="submit">Sign Up</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="menu-notifications" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="menu-notifications-title">Notifications
+        <t id="notifications-help-button">❔</t>
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <t id="notifications-help" class="offcanvas-body" disabled="true"></t>
+    <div id="menu-notifications-body" class="offcanvas-body">
+    </div>
+  </div>
+
+  <!-- MAIN ROOT -->
+  <div class="card modal-postauth">
+    <div id="root" class="card-body">
+    </div>
+  </div>
+
+<!-- Modal -->
+<div class="modal fade" id="menu-modal" tabindex="-1" aria-labelledby="menu-modal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="menu-modal-title">Modal title</h1>
+        <button id="modal-close-button" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="menu-modal-body" class="modal-body"></div>
+      <div id="menu-modal-footer" class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+
+  <!-- menu-toast -->
+  <div class="position-fixed bottom-0 end-0 p-3">
+    <div id="menu-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong id="menu-toast-title" class="me-auto">Bootstrap</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div id="menu-toast-body" class="toast-body"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDeG-hcmsVMSCB7JIEKWPA7ZJTruLqI4CI",
+      authDomain: "genvolmangementsys.firebaseapp.com",
+      projectId: "genvolmangementsys",
+      storageBucket: "genvolmangementsys.appspot.com",
+      messagingSenderId: "399765676406",
+      appId: "1:399765676406:web:20b32f39132147786eda57"
+    };
+    // Initialize Firebase  
+    const app = initializeApp(firebaseConfig);
+
+  </script>
+
+  <script type="module" src="app.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
